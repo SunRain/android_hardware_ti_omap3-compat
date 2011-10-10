@@ -1,4 +1,5 @@
 LOCAL_PATH := $(call my-dir)
+
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
@@ -7,6 +8,8 @@ LOCAL_SRC_FILES := \
     TIOMXPlugin.cpp
 
 LOCAL_CFLAGS := $(PV_CFLAGS_MINUS_VISIBILITY)
+
+TOP ?= $(ANDROID_BUILD_TOP)
 
 LOCAL_C_INCLUDES:= \
         $(TOP)/frameworks/base/include/media/stagefright/openmax \
@@ -17,7 +20,7 @@ LOCAL_SHARED_LIBRARIES :=       \
         libutils                \
         libcutils               \
         libui                   \
-        libdl					\
+        libdl                   \
         libsurfaceflinger_client
 
 LOCAL_MODULE := libstagefrighthw
