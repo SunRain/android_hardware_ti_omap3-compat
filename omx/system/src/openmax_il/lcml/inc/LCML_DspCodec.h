@@ -53,17 +53,10 @@
 
 #define __ERROR_PROPAGATION__
 
-
 /*switch on/off here */
-#ifndef UNDER_CE
 #ifdef ANDROID
     #include <utils/Log.h>
 #endif
-#else
-    #include <oaf_osal.h>
-    #include <oaf_debug.h>
-#endif
-
 
 #ifdef __PERF_INSTRUMENTATION__
 #include "perf.h"
@@ -77,14 +70,13 @@
 
 #define DSP_ERROR_EXIT(err, msg, label)                \
     if (DSP_FAILED (err)) {                        \
-        printf("\n****************LCML ERROR : DSP ************************\n");\
-        printf("Error: %s : Err Num = %lx", msg, err);  \
+        LOGE("\n****************LCML ERROR : DSPs ***********************\n");\
+        LOGE("Error: %s : Err Num = %lx", msg, err);  \
         eError = OMX_ErrorHardware;                \
-        printf("\n****************LCML ERROR : DSP ************************\n");\
+        LOGE("\n****************LCML ERROR : DSP ************************\n");\
         goto label;                               \
-    }                                              /**/
+    }
 
-/*Used by some closed source codecs to recover hardware errors*/
 #ifdef MOTO_FORCE_RECOVERY
 #include <DSPManager.h>
 #undef DSP_ERROR_EXIT
@@ -290,6 +282,7 @@ typedef struct LCML_DSP_INTERFACE
     OMX_U32 iBufinputcount;
     OMX_U32 iBufoutputcount;
     OMX_U32 pshutdownFlag;
+    OMX_U32 iDspOpenCount;
 #ifdef __ERROR_PROPAGATION__
     struct DSP_NOTIFICATION * g_aNotificationObjects[3];
 #else
@@ -312,6 +305,7 @@ typedef struct LCML_DSP_INTERFACE
     OMX_BOOL ReUseMap;
     pthread_mutex_t m_isStopped_mutex;
 
+    OMX_BOOL vid_play_no_invalidate_flag;
 }LCML_DSP_INTERFACE;
 
 #endif /* __MMDSPCODEC_H__ */
