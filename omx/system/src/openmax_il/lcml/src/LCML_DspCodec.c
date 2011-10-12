@@ -42,11 +42,7 @@
 *!
 * ============================================================================= */
 
-#ifdef UNDER_CE
-    #include <windows.h>
-#else
-    #include <errno.h>
-#endif
+#include <errno.h>
 
 #ifdef ANDROID
 #include <linux/prctl.h>

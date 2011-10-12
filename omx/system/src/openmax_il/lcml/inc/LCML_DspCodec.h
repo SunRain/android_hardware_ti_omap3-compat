@@ -53,17 +53,10 @@
 
 #define __ERROR_PROPAGATION__
 
-
 /*switch on/off here */
-#ifndef UNDER_CE
 #ifdef ANDROID
     #include <utils/Log.h>
 #endif
-#else
-    #include <oaf_osal.h>
-    #include <oaf_debug.h>
-#endif
-
 
 #ifdef __PERF_INSTRUMENTATION__
 #include "perf.h"
