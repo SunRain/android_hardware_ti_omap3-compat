@@ -81,11 +81,6 @@
 
 #define DSP_MMU_FAULT_HANDLING
 
-// We cannot request the same MHz for all resolutions.
-// we have to change this implementation once we modify
-// opencore to request the correct level based on resolution/bitrate/etc
-#define VIDEO_ENCODER_MHZ (400 - 45 + 2)
-
 /* H264 Specific */
 #define SPS_CODE_PREFIX 0x07
 #define PPS_CODE_PREFIX 0x08

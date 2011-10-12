@@ -8,12 +8,10 @@ include $(CLEAR_VARS)
 TOP ?= $(ANDROID_BUILD_TOP)
 TI_BRIDGE_TOP := $(TOP)/hardware/ti/omap3-compat/dspbridge
 
-# Recent versions contains api folder
-TI_BRIDGE_INCLUDES := $(TI_BRIDGE_TOP)/inc $(TI_BRIDGE_TOP)/api/inc
+TI_BRIDGE_INCLUDES := $(TI_BRIDGE_TOP)/libbridge/inc
+#TI_BRIDGE_INCLUDES := $(TI_BRIDGE_TOP)/inc
 
-# TI_BRIDGE_INCLUDES := $(TI_BRIDGE_TOP)/libbridge/inc
-
-OMX_DEBUG := 1
+OMX_DEBUG := 0
 RESOURCE_MANAGER_ENABLED := 0
 ENABLE_RMPM_STUB := 0
 DVFS_ENABLED := 0
@@ -42,22 +40,22 @@ BUILD_AMRNB_DECODER := 1
 BUILD_AMRWB_DECODER := 1
 endif
 
-TI_OMX_TOP := $(LOCAL_PATH)
+TI_OMX_TOP ?= $(LOCAL_PATH)
 TI_OMX_SYSTEM := $(TI_OMX_TOP)/system/src/openmax_il
 TI_OMX_VIDEO := $(TI_OMX_TOP)/video/src/openmax_il
 TI_OMX_AUDIO := $(TI_OMX_TOP)/audio/src/openmax_il
 TI_OMX_IMAGE := $(TI_OMX_TOP)/image/src/openmax_il
 
 TI_OMX_INCLUDES := \
-        $(TI_OMX_SYSTEM)/omx_core/inc
+    $(TI_OMX_SYSTEM)/omx_core/inc
 
 TI_OMX_COMP_SHARED_LIBRARIES := \
-        libdl \
-        libcutils \
-        liblog \
-        libbridge \
-        libOMX_Core \
-        libLCML \
+    libdl \
+    libcutils \
+    liblog \
+    libbridge \
+    libOMX_Core \
+    libLCML \
 
 ifeq ($(PERF_INSTRUMENTATION),1)
 TI_OMX_COMP_SHARED_LIBRARIES += libPERF
@@ -86,14 +84,14 @@ TI_OMX_CFLAGS += -DMOTO_FORCE_RECOVERY
 endif
 
 TI_OMX_COMP_C_INCLUDES := \
-        $(TI_OMX_INCLUDES) \
-        $(TI_BRIDGE_INCLUDES) \
-        $(TI_OMX_SYSTEM)/lcml/inc \
-        $(TI_OMX_SYSTEM)/common/inc \
-        $(TI_OMX_SYSTEM)/perf/inc \
-        $(TI_OMX_SYSTEM)/resource_manager/inc \
-        $(TI_OMX_SYSTEM)/resource_manager_proxy/inc \
-        $(TI_OMX_SYSTEM)/omx_policy_manager/inc \
+    $(TI_OMX_INCLUDES) \
+    $(TI_BRIDGE_INCLUDES) \
+    $(TI_OMX_SYSTEM)/lcml/inc \
+    $(TI_OMX_SYSTEM)/common/inc \
+    $(TI_OMX_SYSTEM)/perf/inc \
+    $(TI_OMX_SYSTEM)/resource_manager/inc \
+    $(TI_OMX_SYSTEM)/resource_manager_proxy/inc \
+    $(TI_OMX_SYSTEM)/omx_policy_manager/inc \
 
 ifeq ($(PERF_INSTRUMENTATION),1)
 include $(TI_OMX_SYSTEM)/perf/Android.mk
@@ -164,14 +162,6 @@ include $(TI_OMX_VIDEO)/prepost_processor/Android.mk
 #call to image
 include $(TI_OMX_IMAGE)/jpeg_enc/Android.mk
 include $(TI_OMX_IMAGE)/jpeg_dec/Android.mk
-
-#call to plugin (froyo only ?)
-#ifneq ($(filter 2.2%,$(PLATFORM_VERSION)),)
-include $(TI_OMX_TOP)/core_plugin/Android.mk
-#endif
-
-#call to ti_omx_config_parser
-include $(TI_OMX_TOP)/ti_omx_config_parser/Android.mk
 
 endif # HARDWARE_OMX
 

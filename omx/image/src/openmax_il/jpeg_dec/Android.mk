@@ -9,15 +9,20 @@ LOCAL_SRC_FILES:= \
 	src/OMX_JpegDec_Utils.c \
 	src/OMX_JpegDecoder.c \
 
+TOP ?= $(ANDROID_BUILD_TOP)
 TI_OMX_TOP   ?= $(TOP)/hardware/ti/omx
 TI_OMX_IMAGE ?= $(TI_OMX_TOP)/image/src/openmax_il
 TI_OMX_SYSTEM?= $(TI_OMX_TOP)/system/src/openmax_il
 
+TI_BRIDGE_TOP      ?= $(TOP)/hardware/ti/omap3-compat/dspbridge
+TI_BRIDGE_INCLUDES ?= $(TI_BRIDGE_TOP)/libbridge/inc
+
+
 TI_OMX_COMP_C_INCLUDES ?= \
 	$(TI_OMX_SYSTEM)/lcml/inc \
 	$(TI_OMX_SYSTEM)/common/inc \
+	$(TI_BRIDGE_INCLUDES) \
 	$(TOP)/frameworks/base/include/media/stagefright/openmax \
-	$(TOP)/hardware/ti/omap3-compat/dspbridge/libbridge/inc \
 
 LOCAL_C_INCLUDES := \
 	$(TI_OMX_COMP_C_INCLUDES) \
@@ -46,8 +51,8 @@ LOCAL_SRC_FILES:= tests/JPEGTest.c
 TI_OMX_COMP_C_INCLUDES ?= \
 	$(TI_OMX_SYSTEM)/lcml/inc \
 	$(TI_OMX_SYSTEM)/common/inc \
+	$(TI_BRIDGE_INCLUDES) \
 	$(TOP)/frameworks/base/include/media/stagefright/openmax \
-	$(TOP)/hardware/ti/omap3-compat/dspbridge/libbridge/inc \
 
 LOCAL_C_INCLUDES := \
 	$(TI_OMX_COMP_C_INCLUDES) \
