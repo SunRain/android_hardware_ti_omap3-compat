@@ -68,9 +68,6 @@
 #ifdef ANDROID
     #undef LOG_TAG
     #define LOG_TAG "OMX_WBAMRDEC"
-
-/* PV opencore capability custom parameter index */
-    #define PV_OMX_COMPONENT_CAPABILITY_TYPE_INDEX 0xFF7A347
 #endif
 
 /* =======================================================================
@@ -440,19 +437,6 @@ struct WBAMRDEC_BUFFERLIST{
         } OMX_Event;
     #endif
 #endif
-
-typedef struct PV_OMXComponentCapabilityFlagsType
-{
-        ////////////////// OMX COMPONENT CAPABILITY RELATED MEMBERS (for opencore compatability)
-        OMX_BOOL iIsOMXComponentMultiThreaded;
-        OMX_BOOL iOMXComponentSupportsExternalOutputBufferAlloc;
-        OMX_BOOL iOMXComponentSupportsExternalInputBufferAlloc;
-        OMX_BOOL iOMXComponentSupportsMovableInputBuffers;
-        OMX_BOOL iOMXComponentSupportsPartialFrames;
-        OMX_BOOL iOMXComponentNeedsNALStartCode;
-        OMX_BOOL iOMXComponentCanHandleIncompleteFrames;
-} PV_OMXComponentCapabilityFlagsType;
-
 
 /* =================================================================================== */
 /*

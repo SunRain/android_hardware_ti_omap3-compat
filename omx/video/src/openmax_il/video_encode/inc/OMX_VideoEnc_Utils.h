@@ -113,11 +113,6 @@
 #define WVGA_MAX_WIDTH 854
 #define WVGA_MAX_HEIGHT WVGA_MAX_WIDTH
 
-/*
-* Definition of capabilities index and structure
-* Needed to inform OpenCore about component capabilities.
-*/
-#define PV_OMX_COMPONENT_CAPABILITY_TYPE_INDEX 0xFF7A347
 
 typedef struct PV_OMXComponentCapabilityFlagsType
 {

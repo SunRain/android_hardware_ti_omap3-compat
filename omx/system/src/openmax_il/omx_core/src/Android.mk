@@ -17,13 +17,6 @@ LOCAL_SHARED_LIBRARIES := \
 	
 LOCAL_CFLAGS := $(TI_OMX_CFLAGS)
 
-ifneq ($(BUILD_WITHOUT_PV),true)
-LOCAL_SHARED_LIBRARIES += \
-	libVendor_ti_omx_config_parser
-else
-LOCAL_CFLAGS += -DNO_OPENCORE
-endif
-
 LOCAL_MODULE:= libOMX_Core
 LOCAL_MODULE_TAGS := optional
 

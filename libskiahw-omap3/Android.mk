@@ -33,8 +33,7 @@ LOCAL_REQUIRED_MODULES := libskia
 LOCAL_SHARED_LIBRARIES := \
 	libskia \
         libutils \
-        libcutils \
-	$(BOARD_OPENCORE_LIBRARIES)
+        libcutils 
 
 LOCAL_C_INCLUDES += \
 	$(TOP)/external/skia/include/core \
