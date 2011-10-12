@@ -12,16 +12,16 @@ LOCAL_CFLAGS := $(PV_CFLAGS_MINUS_VISIBILITY)
 TOP ?= $(ANDROID_BUILD_TOP)
 
 LOCAL_C_INCLUDES:= \
-        $(TOP)/frameworks/base/include/media/stagefright/openmax \
-        $(TOP)/hardware/ti/omap3-compat/liboverlay
+    $(TOP)/frameworks/base/include/media/stagefright/openmax \
+    $(TOP)/hardware/ti/omap3-compat/liboverlay
 
-LOCAL_SHARED_LIBRARIES :=       \
-        libbinder               \
-        libutils                \
-        libcutils               \
-        libui                   \
-        libdl                   \
-        libsurfaceflinger_client
+LOCAL_SHARED_LIBRARIES := \
+    libbinder \
+    libutils \
+    libcutils \
+    libui \
+    libdl \
+    libsurfaceflinger_client
 
 LOCAL_MODULE := libstagefrighthw
 

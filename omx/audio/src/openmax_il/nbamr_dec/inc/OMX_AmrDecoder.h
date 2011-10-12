@@ -831,8 +831,6 @@ typedef struct AMRDEC_COMPONENT_PRIVATE
     /** Flag to mark RTSP**/
     OMX_U8 using_rtsp;  
 
-    PV_OMXComponentCapabilityFlagsType iPVCapabilityFlags;
-
     struct OMX_TI_Debug dbg;
 
     /** Indicate when first output buffer received from DSP **/

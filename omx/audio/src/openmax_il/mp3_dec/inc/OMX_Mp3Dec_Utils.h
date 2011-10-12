@@ -751,7 +751,6 @@ typedef struct MP3DEC_COMPONENT_PRIVATE
     /** Last buffer received usind in PV-Android context **/
     OMX_BUFFERHEADERTYPE *lastout;
 
-    PV_OMXComponentCapabilityFlagsType iPVCapabilityFlags;
     OMX_BOOL reconfigInputPort;
     OMX_BOOL reconfigOutputPort;
     OMX_BOOL bConfigData;

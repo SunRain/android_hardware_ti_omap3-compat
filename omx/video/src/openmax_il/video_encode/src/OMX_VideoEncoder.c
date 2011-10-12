@@ -584,10 +584,6 @@ sDynamicFormat = getenv("FORMAT");
                   sizeof(OMX_VIDEO_PARAM_MOTIONVECTORTYPE),
                   OMX_VIDEO_PARAM_MOTIONVECTORTYPE,
                   pMemoryListHead, dbg);
-    VIDENC_MALLOC(pComponentPrivate->pCapabilityFlags,
-                  sizeof(PV_OMXComponentCapabilityFlagsType),
-                  PV_OMXComponentCapabilityFlagsType,
-                  pMemoryListHead, dbg);
 
     /* Set pPortParamType defaults */
     OMX_CONF_INIT_STRUCT(pComponentPrivate->pPortParamType, OMX_PORT_PARAM_TYPE);

@@ -649,8 +649,6 @@ typedef struct WBAMR_DEC_COMPONENT_PRIVATE
     /** Flag to mark RTSP**/
     OMX_U8 using_rtsp;  
     
-    PV_OMXComponentCapabilityFlagsType iPVCapabilityFlags;
-
     struct OMX_TI_Debug dbg;    
 
 } WBAMR_DEC_COMPONENT_PRIVATE;

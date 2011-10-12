@@ -916,7 +916,6 @@ typedef struct AACDEC_COMPONENT_PRIVATE
     /** Temporal time stamp **/
     OMX_TICKS temp_TS;
 
-    PV_OMXComponentCapabilityFlagsType iPVCapabilityFlags;
     OMX_BOOL bConfigData;
     OMX_BOOL reconfigInputPort;
     OMX_BOOL reconfigOutputPort;

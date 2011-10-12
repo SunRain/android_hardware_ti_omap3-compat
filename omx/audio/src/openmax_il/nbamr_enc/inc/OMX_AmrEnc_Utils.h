@@ -910,7 +910,6 @@ typedef struct AMRENC_COMPONENT_PRIVATE
     
     OMX_PARAM_COMPONENTROLETYPE componentRole;
     OMX_U32 teeMode;
-    PV_OMXComponentCapabilityFlagsType iPVCapabilityFlags;
 
     struct OMX_TI_Debug dbg;
 

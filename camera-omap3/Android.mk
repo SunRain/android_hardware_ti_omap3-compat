@@ -1,14 +1,12 @@
 ifdef BOARD_USES_TI_CAMERA_HAL
-ifeq ($(TARGET_BOARD_PLATFORM),omap3)
 
 ################################################
 
-LOCAL_PATH:= $(call my-dir)
+LOCAL_PATH := $(call my-dir)
 
 TOP ?= $(ANDROID_BUILD_TOP)
-
-TI_OMX_TOP ?= $(TOP)/hardware/ti/omap3-compat/omx
-TI_OMX_IMAGE ?= $(TI_OMX_TOP)/image/src/openmax_il
+TI_OMX_TOP    ?= $(TOP)/hardware/ti/omap3-compat/omx
+TI_OMX_IMAGE  ?= $(TI_OMX_TOP)/image/src/openmax_il
 TI_OMX_SYSTEM ?= $(TI_OMX_TOP)/system/src/openmax_il
 
 include $(CLEAR_VARS)
@@ -43,10 +41,10 @@ LOCAL_SRC_FILES += \
 
 LOCAL_C_INCLUDES += \
     $(TOP)/hardware/ti/omap3-compat/dspbridge/libbridge/inc \
-    $(TI_OMX_TOP)/system/src/openmax_il/lcml/inc \
-    $(TI_OMX_TOP)/system/src/openmax_il/omx_core/inc \
-    $(TI_OMX_TOP)/system/src/openmax_il/common/inc \
-    $(TI_OMX_TOP)/image/src/openmax_il/jpeg_enc/inc \
+    $(TI_OMX_SYSTEM)/lcml/inc \
+    $(TI_OMX_SYSTEM)/omx_core/inc \
+    $(TI_OMX_SYSTEM)/common/inc \
+    $(TI_OMX_IMAGE)/jpeg_enc/inc \
     $(TOP)/external/libexif
 
 LOCAL_CFLAGS += -O0 -g3 -fpic -fstrict-aliasing -DIPP_LINUX -D___ANDROID___ -DHARDWARE_OMX
@@ -111,8 +109,8 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES := JpegEncoderTest.cpp
 
 LOCAL_C_INCLUDES := \
-    $(TI_OMX_TOP)/system/src/openmax_il/omx_core/inc\
-    $(TI_OMX_TOP)/image/src/openmax_il/jpeg_enc/inc \
+    $(TI_OMX_SYSTEM)/omx_core/inc \
+    $(TI_OMX_IMAGE)/jpeg_enc/inc \
     $(TOP)/external/libexif \
 
 LOCAL_SHARED_LIBRARIES := libcamera
@@ -126,6 +124,5 @@ endif
 
 ################################################
 
-endif
 endif
 

@@ -842,7 +842,6 @@ typedef struct WMADEC_COMPONENT_PRIVATE
     OMX_U32 app_nBuf;
     OMX_U32 num_Reclaimed_Op_Buff;
     
-    PV_OMXComponentCapabilityFlagsType iPVCapabilityFlags;
     OMX_BOOL reconfigInputPort;     
     OMX_BOOL reconfigOutputPort;    
     OMX_BOOL bConfigData;           
