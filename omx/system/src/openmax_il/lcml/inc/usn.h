@@ -32,7 +32,8 @@
  *   copied from USN.h and iUlg.h located in dsp 
  */
 
-
+#ifndef OMX_LCML_USN__H
+#define OMX_LCML_USN__H
 
 #define MDN_MONO_CHANNEL                0x0001
 #define MDN_STEREO_INTERLEAVED          0x0002
@@ -98,4 +99,5 @@ typedef enum {
     USN_STRMCMD_FLUSH    
 }USN_StrmCmd;
 
+#endif // OMX_LCML_USN__H
 
