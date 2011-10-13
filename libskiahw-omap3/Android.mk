@@ -5,12 +5,15 @@ TI_OMX_TOP    ?= $(TOP)/hardware/ti/omap3-compat/omx
 TI_OMX_IMAGE  ?= $(TI_OMX_TOP)/image/src/openmax_il
 TI_OMX_SYSTEM ?= $(TI_OMX_TOP)/system/src/openmax_il
 
+TI_BRIDGE_TOP := $(TOP)/hardware/ti/omap3-compat/dspbridge
+TI_BRIDGE_INCLUDES := $(TI_BRIDGE_TOP)/libbridge/inc
+
 TI_OMX_COMP_C_INCLUDES ?= \
 	$(TI_OMX_TOP)/lcml/inc \
 	$(TI_OMX_TOP)/common/inc \
 	$(TI_OMX_SYSTEM)/omx_core/inc \
+	$(TI_BRIDGE_INCLUDES) \
 	$(TOP)/frameworks/base/include/media/stagefright/openmax \
-	$(TOP)/hardware/ti/omap3/dspbridge/libbridge/inc 
 
 OMX_VENDOR_INCLUDES ?= $(TI_OMX_COMP_C_INCLUDES)
 
