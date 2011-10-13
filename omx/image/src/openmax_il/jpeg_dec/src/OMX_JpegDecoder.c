@@ -41,21 +41,14 @@
 
 /* -----------System and Platform Files ------------------------*/
 
-#ifdef UNDER_CE
-    #include <windows.h>
-    #include <oaf_osal.h>
-    #include <omx_core.h>
-#else
-    #include <wchar.h>
-    #include <unistd.h>
-    #include <sys/time.h>
-    #include <sys/types.h>
-    #include <sys/ioctl.h>
-    #include <sys/select.h>
-    #include <errno.h>
-    #include <pthread.h>
-#endif
-
+#include <wchar.h>
+#include <unistd.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/ioctl.h>
+#include <sys/select.h>
+#include <errno.h>
+#include <pthread.h>
 #include <string.h>
 #include <fcntl.h>
 #include <stdlib.h>
@@ -789,9 +782,9 @@ OMX_ERRORTYPE OMX_ComponentInit(OMX_HANDLETYPE hComponent)
     pComponentPrivate->pCompPort[JPEGDEC_OUTPUT_PORT]->pPortDef->format.image.bFlagErrorConcealment = OMX_FALSE;
     pComponentPrivate->pCompPort[JPEGDEC_OUTPUT_PORT]->pPortDef->format.image.eCompressionFormat = OMX_IMAGE_CodingUnused;
     pComponentPrivate->pCompPort[JPEGDEC_OUTPUT_PORT]->pPortDef->format.image.eColorFormat          =  OMX_COLOR_FormatYUV420PackedPlanar;
+
     /* added for vpp tunneling */
     pComponentPrivate->pCompPort[JPEGDEC_OUTPUT_PORT]->pPortDef->format.video.eColorFormat = OMX_COLOR_FormatYCbYCr;
-
 
     /* Set pInPortFormat defaults */
     OMX_CONF_INIT_STRUCT(pComponentPrivate->pCompPort[JPEGDEC_INPUT_PORT]->pPortFormat, OMX_IMAGE_PARAM_PORTFORMATTYPE);
