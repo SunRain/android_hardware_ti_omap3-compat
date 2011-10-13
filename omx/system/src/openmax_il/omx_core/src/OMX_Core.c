@@ -66,7 +66,10 @@ char *tComponentName[MAXCOMP][3] = {
     {"OMX.TI.Video.encoder", "video_encoder.h263"},
     {"OMX.TI.Video.encoder", "video_encoder.avc"},
     {"OMX.TI.720P.Encoder", "video_encoder.avc"},
-    //{"OMX.TI.VPP", "iv_renderer.yuv.overlay"},
+#ifdef BUILD_WITH_VPP
+    {"OMX.TI.VPP", "iv_renderer.rgb.overlay"},
+    {"OMX.TI.VPP", "iv_renderer.yuv.overlay"},
+#endif
     //{"OMX.TI.Camera", "camera.yuv"},
 
     /* Speech components */

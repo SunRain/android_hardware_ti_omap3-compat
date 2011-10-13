@@ -22,8 +22,12 @@ PERF_READER := 1
 BUILD_JPEG_DECODER ?= 1
 BUILD_JPEG_ENCODER ?= 1
 
+# Video pre/post processor
+BUILD_VPP ?= 1
+
 ifeq ($(OMX_DEBUG),1)
 BUILD_JPEG_DEC_TEST ?= 1
+BUILD_VPP_TEST ?=1
 endif
 
 TI_OMX_CFLAGS := -Wall -fpic -pipe -finline-functions -DSTATIC_TABLE -O0
