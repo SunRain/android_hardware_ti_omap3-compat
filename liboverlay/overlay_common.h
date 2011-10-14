@@ -28,7 +28,7 @@
 #define NUM_OVERLAY_BUFFERS_REQUESTED  (6)
 
 /* These values should come from Surface Flinger */
-#define LCD_WIDTH 800
+#define LCD_WIDTH 864
 #define LCD_HEIGHT 480
 #define TV_WIDTH 720
 #define TV_HEIGHT 480
