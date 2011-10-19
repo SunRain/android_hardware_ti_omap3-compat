@@ -51,16 +51,16 @@ char *tComponentName[MAXCOMP][3] = {
     {"OMX.TI.JPEG.decoder", "image_decoder.jpeg"},
     {"OMX.TI.JPEG.Encoder", "image_encoder.jpeg"},
     //{"OMX.TI.Video.Decoder", "video_decoder.h263"},
+    //{"OMX.TI.Video.Decoder", "video_decoder.mpeg2"},
     {"OMX.TI.Video.Decoder", "video_decoder.mpeg4"},
     {"OMX.TI.Video.Decoder", "video_decoder.wmv"},
-    {"OMX.TI.Video.Decoder", "video_decoder.avc"},
     {"OMX.TI.720P.Decoder", "video_decoder.avc"},
     {"OMX.TI.720P.Decoder", "video_decoder.mpeg4"},
+    {"OMX.TI.Video.Decoder", "video_decoder.avc"},
 #ifdef BUILD_WITH_ITTIAM_DIVX
     {"OMX.ITTIAM.DivX720P.Decoder", "video_decoder.divx"},
     {"OMX.ITTIAM.DivX3.Decoder", "video_decoder.divx3"},
 #endif
-    //{"OMX.TI.Video.Decoder", "video_decoder.mpeg2"},
     {"OMX.TI.Video.encoder", "video_encoder.mpeg4"},
     {"OMX.TI.720P.Encoder", "video_encoder.mpeg4"},
     {"OMX.TI.Video.encoder", "video_encoder.h263"},

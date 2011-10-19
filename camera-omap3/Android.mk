@@ -5,9 +5,12 @@ ifdef BOARD_USES_TI_CAMERA_HAL
 LOCAL_PATH := $(call my-dir)
 
 TOP ?= $(ANDROID_BUILD_TOP)
-TI_OMX_TOP    ?= $(TOP)/hardware/ti/omap3-compat/omx
+TI_OMX_TOP    ?= $(ANDROID_BUILD_TOP)/hardware/ti/omap3-compat/omx
 TI_OMX_IMAGE  ?= $(TI_OMX_TOP)/image/src/openmax_il
 TI_OMX_SYSTEM ?= $(TI_OMX_TOP)/system/src/openmax_il
+
+TI_BRIDGE_TOP := $(ANDROID_BUILD_TOP)/hardware/ti/omap3-compat/dspbridge
+TI_BRIDGE_INCLUDES := $(TI_BRIDGE_TOP)/libbridge/inc
 
 include $(CLEAR_VARS)
 
@@ -40,7 +43,7 @@ LOCAL_SRC_FILES += \
     JpegEncoderEXIF.cpp \
 
 LOCAL_C_INCLUDES += \
-    $(TOP)/hardware/ti/omap3-compat/dspbridge/libbridge/inc \
+    $(TI_BRIDGE_INCLUDES) \
     $(TI_OMX_SYSTEM)/lcml/inc \
     $(TI_OMX_SYSTEM)/omx_core/inc \
     $(TI_OMX_SYSTEM)/common/inc \
@@ -49,8 +52,9 @@ LOCAL_C_INCLUDES += \
 
 LOCAL_CFLAGS += -O0 -g3 -fpic -fstrict-aliasing -DIPP_LINUX -D___ANDROID___ -DHARDWARE_OMX
 
-# Required for Motorola Defy libbridge
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),jordan)
+# Required for Motorola Defy, Cliq2 & DroidX
+# kernel/arch/arm/plat-omap/include/dspbridge/wcdioctl.h
+ifeq ($(TARGET_USE_OMX_RECOVERY),true)
 LOCAL_CFLAGS += -DMOTO_FORCE_RECOVERY
 endif
 
