@@ -9,11 +9,9 @@ LOCAL_SRC_FILES := \
 
 LOCAL_CFLAGS := $(PV_CFLAGS_MINUS_VISIBILITY)
 
-TOP ?= $(ANDROID_BUILD_TOP)
-
 LOCAL_C_INCLUDES:= \
-    $(TOP)/frameworks/base/include/media/stagefright/openmax \
-    $(TOP)/hardware/ti/omap3-compat/liboverlay
+    $(ANDROID_BUILD_TOP)/frameworks/base/include/media/stagefright/openmax \
+    $(ANDROID_BUILD_TOP)/hardware/ti/omap3-compat/liboverlay
 
 LOCAL_SHARED_LIBRARIES := \
     libbinder \
