@@ -4167,12 +4167,12 @@ void CalculateBufferSize(OMX_PARAM_PORTDEFINITIONTYPE* pCompPort, VIDENC_COMPONE
         else if ((pCompPort->format.video.nFrameWidth >= 848) &&
                  (pCompPort->format.video.nFrameHeight >= 480)) {
             pCompPort->nBufferSize = pCompPort->format.video.nFrameWidth *
-                                    pCompPort->format.video.nFrameHeight * 2.5;
+                                    pCompPort->format.video.nFrameHeight * 2.2;
         }
 #endif
         else {
             pCompPort->nBufferSize = pCompPort->format.video.nFrameWidth *
-                                     pCompPort->format.video.nFrameHeight * 2;
+                                    pCompPort->format.video.nFrameHeight * 2.2;
         }
     }
     else {

@@ -40,8 +40,8 @@
 #include <utils/threads.h>
 
 extern "C" {
-	#include "OMX_Component.h"
-	#include "OMX_IVCommon.h"
+#include "OMX_Component.h"
+#include "OMX_IVCommon.h"
 }
 
 #define OPTIMIZE 1
@@ -71,7 +71,7 @@ extern "C" {
 
 #define JPEGDEC_PROG_MAXRESOLUTION 12032000       //(4000*3008)
 #define JPEGDEC_BASELINE_MAXRESOLUTION 25044736   //(5776*4336)
-#define PROG_WIDTH	4000
+#define PROG_WIDTH  4000
 #define PROG_HEIGHT 3008
 #define SEQ_WIDTH   5776
 #define SEQ_HEIGHT  4336
@@ -81,34 +81,34 @@ class SkTIJPEGImageDecoder
 
 public:
 
-	enum JPEGDEC_State
-	{
-		STATE_LOADED, // 0
-		STATE_IDLE, // 1
-		STATE_EXECUTING, // 2
-		STATE_FILL_BUFFER_DONE_CALLED, // 3
-		STATE_EMPTY_BUFFER_DONE_CALLED, // 4
-		STATE_ERROR, // 5
-        STATE_INVALID, //6
-		STATE_EXIT // 7
-	};
+    enum JPEGDEC_State
+    {
+        STATE_LOADED,    // 0
+        STATE_IDLE,      // 1
+        STATE_EXECUTING, // 2
+        STATE_FILL_BUFFER_DONE_CALLED,  // 3
+        STATE_EMPTY_BUFFER_DONE_CALLED, // 4
+        STATE_ERROR,     // 5
+        STATE_INVALID,   // 6
+        STATE_EXIT       // 7
+   };
 
-	typedef struct JpegDecoderParams
-	{
-		// Quatization Table
-		// Huffman Table
-		// SectionDecode;
-		// SubRegionDecode
+   typedef struct JpegDecoderParams
+   {
+        // Quatization Table
+        // Huffman Table
+        // SectionDecode;
+        // SubRegionDecode
         OMX_U32 nXOrg;         /* X origin*/
         OMX_U32 nYOrg;         /* Y origin*/
         OMX_U32 nXLength;      /* X length*/
         OMX_U32 nYLength;      /* Y length*/
 
-	}JpegDecoderParams;
+    } JpegDecoderParams;
 
     sem_t *semaphore;
-	JPEGDEC_State iState;
-	JPEGDEC_State iLastState;
+    JPEGDEC_State iState;
+    JPEGDEC_State iLastState;
 
     SkTIJPEGImageDecoder();
     ~SkTIJPEGImageDecoder();
@@ -123,10 +123,10 @@ public:
     void PrintState();
     void FillBufferDone(OMX_U8* pBuffer, OMX_U32 nFilledLen);
     void EventHandler(OMX_HANDLETYPE hComponent,
-    									OMX_EVENTTYPE eEvent,
-    									OMX_U32 nData1,
-    									OMX_U32 nData2,
-    									OMX_PTR pEventData);
+                      OMX_EVENTTYPE eEvent,
+                      OMX_U32 nData1,
+                      OMX_U32 nData2,
+                      OMX_PTR pEventData);
     int GetLoad(){ return mLoad; }
     void IncDeleteAttempts() {mDeleteAttempts++;}
     void ResetDeleteAttempts() {mDeleteAttempts = 0;}
@@ -135,45 +135,45 @@ public:
 
 private:
 
-	typedef struct JPEG_HEADER_INFO {
-		int nWidth;
-		int nHeight ;
-		int nFormat;
-		int nProgressive;
-                OMX_U8 SOF0_Nf;
-                OMX_U8 SOS_Ns;
-	} JPEG_HEADER_INFO;
+    typedef struct JPEG_HEADER_INFO {
+        int nWidth;
+        int nHeight;
+        int nFormat;
+        int nProgressive;
+        OMX_U8 SOF0_Nf;
+        OMX_U8 SOS_Ns;
+    } JPEG_HEADER_INFO;
 
-        OMX_HANDLETYPE pOMXHandle;
-        OMX_BUFFERHEADERTYPE *pInBuffHead;
-        OMX_BUFFERHEADERTYPE *pOutBuffHead;
-        OMX_PARAM_PORTDEFINITIONTYPE InPortDef;
-        OMX_PARAM_PORTDEFINITIONTYPE OutPortDef;
-        JpegDecoderParams jpegDecParams;
-        SkStream* inStream;
-        SkBitmap* bitmap;
-        android::Mutex       gTIJpegDecMutex;
+    OMX_HANDLETYPE pOMXHandle;
+    OMX_BUFFERHEADERTYPE *pInBuffHead;
+    OMX_BUFFERHEADERTYPE *pOutBuffHead;
+    OMX_PARAM_PORTDEFINITIONTYPE InPortDef;
+    OMX_PARAM_PORTDEFINITIONTYPE OutPortDef;
+    JpegDecoderParams jpegDecParams;
+    SkStream* inStream;
+    SkBitmap* bitmap;
+    android::Mutex gTIJpegDecMutex;
     int mLoad;
     int mDeleteAttempts;
     int mProgressive;
     bool nSubRegDecode;
     bool inStateTransition;
-	OMX_S16 GetYUVformat(OMX_U8 * Data);
-	OMX_S16 Get16m(const void * Short);
-	OMX_S32 ParseJpegHeader (SkStream* stream, JPEG_HEADER_INFO* JpegHeaderInfo);
-	OMX_S32 ParseJpegHeader (OMX_U8* JpgBuffer, OMX_S32 lSize, JPEG_HEADER_INFO* JpgHdrInfo);
-	OMX_U32 JpegHeader_GetMarkerInfo (OMX_U32 Marker, OMX_U8* MarkerData, JPEG_HEADER_INFO* JpgHdrInfo);
-	OMX_S32 fill_data(OMX_U8* pBuf, SkStream* stream, OMX_S32 bufferSize);
-	void FixFrameSize(JPEG_HEADER_INFO* JpegHeaderInfo);
+    OMX_S16 GetYUVformat(OMX_U8 * Data);
+    OMX_S16 Get16m(const void * Short);
+    OMX_S32 ParseJpegHeader (SkStream* stream, JPEG_HEADER_INFO* JpegHeaderInfo);
+    OMX_S32 ParseJpegHeader (OMX_U8* JpgBuffer, OMX_S32 lSize, JPEG_HEADER_INFO* JpgHdrInfo);
+    OMX_U32 JpegHeader_GetMarkerInfo (OMX_U32 Marker, OMX_U8* MarkerData, JPEG_HEADER_INFO* JpgHdrInfo);
+    OMX_S32 fill_data(OMX_U8* pBuf, SkStream* stream, OMX_S32 bufferSize);
+    void FixFrameSize(JPEG_HEADER_INFO* JpegHeaderInfo);
 
 };
 
 OMX_ERRORTYPE OMX_FillBufferDone (OMX_HANDLETYPE hComponent, OMX_PTR ptr, OMX_BUFFERHEADERTYPE* pBuffHead);
 OMX_ERRORTYPE OMX_EmptyBufferDone(OMX_HANDLETYPE hComponent, OMX_PTR ptr, OMX_BUFFERHEADERTYPE* pBuffer);
 OMX_ERRORTYPE OMX_EventHandler(OMX_HANDLETYPE hComponent,
-											OMX_PTR pAppData,
-											OMX_EVENTTYPE eEvent,
-											OMX_U32 nData1,
-											OMX_U32 nData2,
-											OMX_PTR pEventData);
+                               OMX_PTR pAppData,
+                               OMX_EVENTTYPE eEvent,
+                               OMX_U32 nData1,
+                               OMX_U32 nData2,
+                               OMX_PTR pEventData);
 #endif

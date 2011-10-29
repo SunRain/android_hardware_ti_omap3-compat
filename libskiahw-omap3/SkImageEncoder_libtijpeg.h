@@ -49,7 +49,7 @@ extern "C" {
 
 class SkJPEGImageEncoder : public SkImageEncoder {
 protected:
-virtual bool onEncode(SkWStream* stream, const SkBitmap& bm, int quality);
+    virtual bool onEncode(SkWStream* stream, const SkBitmap& bm, int quality);
 };
 
 class SkTIJPEGImageEncoder
@@ -81,7 +81,7 @@ public:
         //CustomHuffmanTable
         //nCropWidth
         //nCropHeight
-    }JpegEncoderParams;
+    } JpegEncoderParams;
 
     sem_t *semaphore;
     JPEGENC_State iState;
@@ -93,19 +93,19 @@ public:
     ~SkTIJPEGImageEncoder();
     bool onEncode(SkImageEncoder* enc_impl, SkWStream* stream, const SkBitmap& bm, int quality);
     bool encodeImage(int outBuffSize, void *inputBuffer, int inBuffSize, int width, int height, int quality, SkBitmap::Config config);
-    bool SetJpegEncodeParameters(JpegEncoderParams * jep) {memcpy(&jpegEncParams, jep, sizeof(JpegEncoderParams)); return true;}
+    bool SetJpegEncodeParameters(JpegEncoderParams * jep) { memcpy(&jpegEncParams, jep, sizeof(JpegEncoderParams)); return true; }
     void Run();
     void PrintState();
     void FillBufferDone(OMX_U8* pBuffer, OMX_U32 size);
     void EventHandler(OMX_HANDLETYPE hComponent,
-                                            OMX_EVENTTYPE eEvent,
-                                            OMX_U32 nData1,
-                                            OMX_U32 nData2,
-                                            OMX_PTR pEventData);
+                      OMX_EVENTTYPE eEvent,
+                      OMX_U32 nData1,
+                      OMX_U32 nData2,
+                      OMX_PTR pEventData);
     int GetLoad(){ return mLoad; }
-    void IncDeleteAttempts() {mDeleteAttempts++;}
-    void ResetDeleteAttempts() {mDeleteAttempts = 0;}
-    int GetDeleteAttempts() {return mDeleteAttempts;}
+    void IncDeleteAttempts() { mDeleteAttempts++; }
+    void ResetDeleteAttempts() { mDeleteAttempts = 0; }
+    int GetDeleteAttempts() { return mDeleteAttempts; }
 
 private:
 
@@ -121,16 +121,16 @@ private:
     int mLoad;
     int mDeleteAttempts;
 
-     bool onEncodeSW(SkWStream* stream, const SkBitmap& bm, int quality);
+    bool onEncodeSW(SkWStream* stream, const SkBitmap& bm, int quality);
 
 };
 
 OMX_ERRORTYPE OMX_JPEGE_FillBufferDone (OMX_HANDLETYPE hComponent, OMX_PTR ptr, OMX_BUFFERHEADERTYPE* pBuffHead);
 OMX_ERRORTYPE OMX_JPEGE_EmptyBufferDone(OMX_HANDLETYPE hComponent, OMX_PTR ptr, OMX_BUFFERHEADERTYPE* pBuffer);
 OMX_ERRORTYPE OMX_JPEGE_EventHandler(OMX_HANDLETYPE hComponent,
-                                            OMX_PTR pAppData,
-                                            OMX_EVENTTYPE eEvent,
-                                            OMX_U32 nData1,
-                                            OMX_U32 nData2,
-                                            OMX_PTR pEventData);
+                                     OMX_PTR pAppData,
+                                     OMX_EVENTTYPE eEvent,
+                                     OMX_U32 nData1,
+                                     OMX_U32 nData2,
+                                     OMX_PTR pEventData);
 #endif

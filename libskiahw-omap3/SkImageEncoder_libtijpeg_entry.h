@@ -42,8 +42,8 @@
 #include <utils/List.h>
 
 extern "C" {
-	#include "OMX_Component.h"
-	#include "OMX_IVCommon.h"
+#include "OMX_Component.h"
+#include "OMX_IVCommon.h"
 }
 class SkTIJPEGImageEncoderEntry;
 
@@ -79,7 +79,7 @@ class SkTIJPEGImageEncoderEntry :public SkImageEncoder
     friend class WatchdogThread<SkTIJPEGImageEncoderEntry>;
 
 protected:
-	virtual bool onEncode(SkWStream* stream, const SkBitmap& bm, int quality);
+    virtual bool onEncode(SkWStream* stream, const SkBitmap& bm, int quality);
 
 public:
     SkTIJPEGImageEncoderEntry();
@@ -96,6 +96,5 @@ extern "C" SkImageEncoder* SkImageEncoder_HWJPEG_Factory() {
 extern "C" SkTIJPEGImageEncoderEntry* SkImageEncoder_TIJPEG_Factory() {
     return SkNEW(SkTIJPEGImageEncoderEntry);
 }
-
 
 #endif

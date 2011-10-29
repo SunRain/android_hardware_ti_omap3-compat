@@ -41,8 +41,8 @@
 #include <utils/List.h>
 
 extern "C" {
-	#include "OMX_Component.h"
-	#include "OMX_IVCommon.h"
+#include "OMX_Component.h"
+#include "OMX_IVCommon.h"
 }
 class SkTIJPEGImageDecoderEntry;
 
@@ -80,7 +80,7 @@ class SkTIJPEGImageDecoderEntry :public SkImageDecoder
     friend class SkTIJPEGImageDecoder;
 
 protected:
-	virtual bool onDecode(SkStream* stream, SkBitmap* bm, Mode);
+    virtual bool onDecode(SkStream* stream, SkBitmap* bm, Mode);
 
 public:
     typedef struct JpegDecoderParams
