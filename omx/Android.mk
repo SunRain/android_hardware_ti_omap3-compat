@@ -5,13 +5,11 @@ TI_OMX_TOP := $(LOCAL_PATH)
 
 include $(CLEAR_VARS)
 
-TOP ?= $(ANDROID_BUILD_TOP)
-TI_BRIDGE_TOP := $(TOP)/hardware/ti/omap3-compat/dspbridge
-
+TI_OMAP_TOP := $(ANDROID_BUILD_TOP)/hardware/ti/omap3-compat
+TI_BRIDGE_TOP := $(TI_OMAP_TOP)/dspbridge
 TI_BRIDGE_INCLUDES := $(TI_BRIDGE_TOP)/libbridge/inc
-#TI_BRIDGE_INCLUDES := $(TI_BRIDGE_TOP)/inc
 
-OMX_DEBUG := 0
+OMX_DEBUG ?= 0
 RESOURCE_MANAGER_ENABLED := 0
 ENABLE_RMPM_STUB := 0
 DVFS_ENABLED := 0
