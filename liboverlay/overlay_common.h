@@ -26,7 +26,6 @@
 
 #define NUM_BUFFERS_TO_BE_QUEUED_FOR_OPTIMAL_PERFORMANCE    3
 #define NUM_OVERLAY_BUFFERS_REQUESTED  (6)
-
 /* These values should come from Surface Flinger */
 #define LCD_WIDTH 864
 #define LCD_HEIGHT 480

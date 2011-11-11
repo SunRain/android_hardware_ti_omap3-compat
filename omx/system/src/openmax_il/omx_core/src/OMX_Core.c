@@ -220,8 +220,6 @@ OMX_ERRORTYPE TIOMX_GetHandle( OMX_HANDLETYPE* pHandle, OMX_STRING cComponentNam
     for (refIndex=0; refIndex < MAX_TABLE_SIZE; refIndex++) {
         //get the index for the component in the table
         if (strcmp(componentTable[refIndex].name, cComponentName) == 0) {
-            LOGD("Found component %s with refCount %d\n",
-                  cComponentName, componentTable[refIndex].refCount);
 
             /* check if the component is already loaded */
             if (componentTable[refIndex].refCount >= MAX_CONCURRENT_INSTANCES) {
@@ -276,6 +274,8 @@ OMX_ERRORTYPE TIOMX_GetHandle( OMX_HANDLETYPE* pHandle, OMX_STRING cComponentNam
                     LOGE("%d:: malloc of pHandle* failed\n", __LINE__);
                     goto CLEAN_UP;
                 }
+                LOGD("Found component %s with refCount %d  pHandle (%p)\n",
+                        cComponentName, componentTable[refIndex].refCount, *pHandle);
 
                 pComponents[i] = *pHandle;
                 componentType = (OMX_COMPONENTTYPE*) *pHandle;
@@ -295,7 +295,7 @@ OMX_ERRORTYPE TIOMX_GetHandle( OMX_HANDLETYPE* pHandle, OMX_STRING cComponentNam
                     goto UNLOCK_MUTEX;  // Component is found, and thus we are done
                 }
                 else if (err == OMX_ErrorInsufficientResources) {
-                        LOGE("%d :: Core: Insufficient Resources for Component %d\n",__LINE__, err);
+                        LOGE("%d :: Core: Insufficient Resources for Component %x pHandle (%p)\n",__LINE__, err, *pHandle);
                         goto CLEAN_UP;
                 }
             }
@@ -371,7 +371,7 @@ OMX_ERRORTYPE TIOMX_FreeHandle (OMX_HANDLETYPE hComponent)
         goto EXIT;
     }
 
-    int refIndex = 0, handleIndex = 0, shiftIndex = 0;
+    int refIndex = 0, handleIndex = 0, shiftIndex=0;
     for (refIndex=0; refIndex < MAX_TABLE_SIZE; refIndex++) {
         for (handleIndex=0; handleIndex < componentTable[refIndex].refCount; handleIndex++){
             /* get the position for the component in the table */
