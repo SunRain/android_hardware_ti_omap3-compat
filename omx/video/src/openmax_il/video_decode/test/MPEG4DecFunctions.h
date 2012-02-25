@@ -24,37 +24,33 @@
 *
 *  Use of this software is controlled by the terms and conditions found
 *  in the license agreement under which this software has been supplied.
-* =========================================================================== */
-/** 
-* @file OMX_VidDec_CustomCmd.h
+* ============================================================================ */
+/**
+* @file MPEG4DecFunctions.h
 *
-* This is an header file for an video Mpeg4 decoder that is fully 
+* This is an header file for an video Mpeg4 decoder that is fully
 * compliant with the OMX Video specification.
-* This the file that the application that uses OMX would include 
+* This the file that the application that uses OMX would include
 * in its code.
 *
 * @path $(CSLPATH)\
-* 
+*
 * @rev 0.1
 */
-/* -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------- */
 
-#ifndef OMX_VIDDEC_CUSTOMCMD_H
-#define OMX_VIDDEC_CUSTOMCMD_H
-#define VIDDEC_CUSTOMPARAM_PROCESSMODE "OMX.TI.VideoDecode.Param.ProcessMode"
-#define VIDDEC_CUSTOMPARAM_H264BITSTREAMFORMAT "OMX.TI.VideoDecode.Param.H264BitStreamFormat"
-#define VIDDEC_CUSTOMPARAM_WMVPROFILE "OMX.TI.VideoDecode.Param.WMVProfile"
-#define VIDDEC_CUSTOMPARAM_WMVFILETYPE "OMX.TI.VideoDecode.Param.WMVFileType"
-#define VIDDEC_CUSTOMPARAM_PARSERENABLED "OMX.TI.VideoDecode.Param.ParserEnabled"
-#define VIDDEC_CUSTOMPARAM_ISNALBIGENDIAN "OMX.TI.VideoDecode.Param.IsNALBigEndian"
-#define VIDDEC_CUSTOMCONFIG_DEBUG "OMX.TI.VideoDecode.Debug"
-#ifdef VIDDEC_SPARK_CODE 
- #define VIDDEC_CUSTOMPARAM_ISSPARKINPUT "OMX.TI.VideoDecode.Param.IsSparkInput"
-#endif
+#ifndef MPEG4FUNC_H
+#define MPEG4FUNC_H
 
-/*------- Program Header Files ----------------------------------------*/
-#include <OMX_Component.h>
+#include "VidDecTest.h"
 
-/*------- Structures ----------------------------------------*/
+#define OMX_MP4DEC_NonMIME  1
 
-#endif /* OMX_VIDDEC_CUSTOMCMD_H */
+/*function prototypes*/
+OMX_ERRORTYPE MPEG4VIDDEC_Fill_Data(MYDATATYPE* pAppData,OMX_BUFFERHEADERTYPE *pBuf);
+OMX_ERRORTYPE MPEG4VIDDEC_AllocateResources(MYDATATYPE* pAppData);
+OMX_ERRORTYPE MPEG4VIDDEC_SetParamPortDefinition(MYDATATYPE* pAppData);
+void MPEG4VIDDEC_FreeResources(MYDATATYPE* pAppData);
+
+#endif /*MPEG4FUNC_H*/
+

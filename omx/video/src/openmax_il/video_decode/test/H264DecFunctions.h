@@ -24,37 +24,30 @@
 *
 *  Use of this software is controlled by the terms and conditions found
 *  in the license agreement under which this software has been supplied.
-* =========================================================================== */
-/** 
-* @file OMX_VidDec_CustomCmd.h
+* ============================================================================ */
+/**
+* @file H264DecFunctions.h
 *
-* This is an header file for an video Mpeg4 decoder that is fully 
+* This is an header file for an video Mpeg4 decoder that is fully
 * compliant with the OMX Video specification.
-* This the file that the application that uses OMX would include 
+* This the file that the application that uses OMX would include
 * in its code.
 *
 * @path $(CSLPATH)\
-* 
+*
 * @rev 0.1
 */
-/* -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------- */
+#ifndef H264FUNC_H
+#define H264FUNC_H
 
-#ifndef OMX_VIDDEC_CUSTOMCMD_H
-#define OMX_VIDDEC_CUSTOMCMD_H
-#define VIDDEC_CUSTOMPARAM_PROCESSMODE "OMX.TI.VideoDecode.Param.ProcessMode"
-#define VIDDEC_CUSTOMPARAM_H264BITSTREAMFORMAT "OMX.TI.VideoDecode.Param.H264BitStreamFormat"
-#define VIDDEC_CUSTOMPARAM_WMVPROFILE "OMX.TI.VideoDecode.Param.WMVProfile"
-#define VIDDEC_CUSTOMPARAM_WMVFILETYPE "OMX.TI.VideoDecode.Param.WMVFileType"
-#define VIDDEC_CUSTOMPARAM_PARSERENABLED "OMX.TI.VideoDecode.Param.ParserEnabled"
-#define VIDDEC_CUSTOMPARAM_ISNALBIGENDIAN "OMX.TI.VideoDecode.Param.IsNALBigEndian"
-#define VIDDEC_CUSTOMCONFIG_DEBUG "OMX.TI.VideoDecode.Debug"
-#ifdef VIDDEC_SPARK_CODE 
- #define VIDDEC_CUSTOMPARAM_ISSPARKINPUT "OMX.TI.VideoDecode.Param.IsSparkInput"
-#endif
+#include "VidDecTest.h"
 
-/*------- Program Header Files ----------------------------------------*/
-#include <OMX_Component.h>
+#define OMX_H264DEC_NonMIME 1
 
-/*------- Structures ----------------------------------------*/
+OMX_ERRORTYPE H264VIDDEC_Fill_Data(MYDATATYPE* pAppData, OMX_BUFFERHEADERTYPE* pBuf);
+OMX_ERRORTYPE H264VIDDEC_SetParamPortDefinition(MYDATATYPE* pAppData);
+OMX_ERRORTYPE H264VIDDEC_AllocateResources(MYDATATYPE* pAppData);
+void H264VIDDEC_FreeResources(MYDATATYPE* pAppData);
 
-#endif /* OMX_VIDDEC_CUSTOMCMD_H */
+#endif /*H264FUNC_H*/
